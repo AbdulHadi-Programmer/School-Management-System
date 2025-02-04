@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> {% block title %} School Management {% endblock %}</title>
+</head>
+<body>
+    <h1>School Management System</h1>
+    <nav>
+        <!-- <a href="{% url 'student_list' %}">Home</a> -->
+        <a href="{% url 'student_list' %}">
+            <button class="btn">View All Students</button>
+        </a>
+        
+        <a href="{% url 'add_student' %}">Add Student</a>
+    </nav>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 20px;
+        background-color: #f5f5f5;
+    }
+    
+    h1 {
+        color: #0A1045;
+    }
+    
+    form label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    
+    input, select, textarea, button {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-top: 5px;
+        width: 100%;
+    }
+    
+    button {
+        margin-top: 10px;
+        background-color: #00C2D1;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #007a80;
+    }
+    
+    .add-button {
+        background-color: #F9E900;
+    }
+    
+    .update-button {
+        background-color: #F6AF65;
+    }
+    
+    .delete-button {
+        background-color: #ED33B9;
+    }
+    
+    .back-button {
+        background-color: #333;
+    }
+</style>
+    <hr>
+    {% block content %}
+    
+
+    {% endblock %}
+</body>
+</html>

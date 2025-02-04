@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if student %}Update Student{% else %}Add Student{% endif %}</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            display: block;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-back {
+            background: #007bff;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .btn-back:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form method="POST">
+        <h2>{% if student %}Update Student{% else %}Add Student{% endif %}</h2>
+        {% csrf_token %}
+
+        <!-- Name -->
+        <div class="mb-3">
+            <label for="name">Name:</label>
+            {{ form.name }}
+        </div>
+
+        <!-- Age -->
+        <div class="mb-3">
+            <label for="age">Age:</label>
+            {{ form.age }}
+        </div>
+
+        <!-- Grade -->
+        <div class="mb-3">
+            <label for="grade">Grade:</label>
+            {{ form.grade }}
+        </div>
+
+        <!-- Parent -->
+        <div class="mb-3">
+            <label for="parent">Parent:</label>
+            {{ form.parent }}
+        </div>
+
+        <!-- Subjects -->
+        <div class="mb-3">
+            <label for="subjects">Subjects:</label>
+            {{ form.subjects }}
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit">{% if student %}Update{% else %}Add{% endif %}</button>
+    </form>
+
+    <!-- Back Buttons -->
+    <a href="{% url 'teachers' %}" class="btn-secondary">Back to Teacher List</a>
+    <a href="{% url 'school' %}" class="btn-secondary btn-back">Back to School</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if enrollment %}Edit{% else %}Add{% endif %} Enrollment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #0A1045;
+            margin-bottom: 20px;
+        }
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        form .subject_r {
+            margin-bottom: 10px;
+        }
+        form button {
+            width: 100%;
+            padding: 14px;
+            background: #00C2D1;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        form button:hover {
+            background: #0096A7;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>{% if enrollment %}Edit{% else %}Add{% endif %} Enrollment</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="student_name_r">Student</label>
+            {{ form.student }}
+
+            <label for="subject_r">Subjects</label>
+            <span name="subject_r">
+                {{ form.subjects }}
+            </span>
+
+            <label for="date">Enrollment Date</label>
+            {{ form.date_enrolled }}
+
+            <button type="submit">
+                {% if enrollment %}Update Enrollment{% else %}Add Enrollment{% endif %}
+            </button>
+        </form>
+
+        <a class="back-link" href="{% url 'enrollment_list' %}">
+            <i class="bi bi-arrow-left-circle"></i> Back to Enrollment List
+        </a>
+    </div>
+</body>
+</html>
